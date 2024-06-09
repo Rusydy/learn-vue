@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ep 3: Lists, Conditionals, and Computed Properties</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="grid place-items-center h-screen">
+  <div id="app">
+    <section>
+      <h2 class="font-bold">Assignment</h2>
+
+      <ul>
+        <li v-for="assignment in assignments">
+          <label>
+            {{ assignment.name }}
+            <input type="checkbox" v-model="assignment.completed">
+          </label>
+        </li>
+      </ul>
+
+      <pre>{{ assignments }}</pre>
+    </section>
+  </div>
+  
+  <script>
+    let app = {
+      data() {
+        return {
+          assignments: [
+            { name: 'Finish Project', completed: false },
+            { name: 'Read chapter 4', completed: false },
+            { name: 'Turn in homework', completed: false }
+          ]
+        };
+      }
+    }
+    Vue.createApp(app).mount('#app');
+  </script>
+</body>
+</html>
