@@ -27,7 +27,10 @@
       </ul>
     </section>
 
-    <section class="mt-8">
+    <section 
+      v-show="assignments.filter(assignment => assignment.completed).length"
+      class="mt-8"
+    >
       <h2 class="font-bold">Completed</h2>
 
       <ul>
