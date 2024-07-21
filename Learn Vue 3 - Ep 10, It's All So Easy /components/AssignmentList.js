@@ -13,6 +13,12 @@ export default {
       </h2>
 
       <div class="flex gap-2">
+        <span
+          @click="currentTag = ''"
+          class="text-xs px-2 py-1 border rounded"
+        >
+          all
+        </span>
         <span 
           @click="currentTag = tag"
           v-for="tag in tags" 
@@ -20,13 +26,6 @@ export default {
           class="text-xs px-2 py-1 border rounded"
         >
           {{ tag }}
-        </span>
-
-        <span
-          @click="currentTag = ''"
-          class="text-xs px-2 py-1 border rounded"
-        >
-          All
         </span>
       </div>
 
