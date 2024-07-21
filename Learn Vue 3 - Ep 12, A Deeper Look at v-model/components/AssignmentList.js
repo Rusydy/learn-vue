@@ -5,18 +5,14 @@ export default {
   components: { Assignment, AssignmentTag },
   template: `
     <section v-show="assignments.length">
-      <h2 
-        class="font-bold mb-2"
-      >
+      <h2 class="font-bold mb-2">
         {{ title }}
-
         <span> ({{ assignments.length }}) </span>
       </h2>
 
       <assignment-tag 
         :initial-tags="assignments.map(a => a.tag)" 
-        :current-tag="currentTag"
-        @update:current-tag="currentTag = $event"
+        v-model="currentTag"
       />
 
       <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
@@ -33,20 +29,17 @@ export default {
     assignments: Array,
     title: String
   },
-
   data() {
     return {
       currentTag: 'all'
     }
   },
-
   computed: {
     filteredAssignments() {
       if (this.currentTag === 'all') {
-        return this.assignments
+        return this.assignments;
       }
-
-      return this.assignments.filter(assignment => assignment.tag === this.currentTag)
+      return this.assignments.filter(assignment => assignment.tag === this.currentTag);
     }
   }
 }
