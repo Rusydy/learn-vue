@@ -13,12 +13,6 @@ export default {
       </h2>
 
       <div class="flex gap-2">
-        <span
-          @click="currentTag = ''"
-          class="text-xs px-2 py-1 border rounded"
-        >
-          all
-        </span>
         <span 
           @click="currentTag = tag"
           v-for="tag in tags" 
@@ -46,23 +40,21 @@ export default {
 
   data() {
     return {
-      currentTag: ''
+      currentTag: 'all'
     }
   },
 
   computed: {
     tags () {
-      return new Set(this.assignments.map(assignment => assignment.tag)) 
+      return ['all', ...new Set(this.assignments.map(assignment => assignment.tag))]
     },
 
     filteredAssignments() {
-      return this.assignments.filter(assignment => {
-        if (!this.currentTag) {
-          return true
-        }
+      if (this.currentTag === 'all') {
+        return this.assignments
+      }
 
-        return assignment.tag === this.currentTag
-      })
+      return this.assignments.filter(assignment => assignment.tag === this.currentTag)
     }
   }
 }
