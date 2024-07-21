@@ -1,28 +1,11 @@
-export default {
-  template: `
-    <section v-show="inprogressAssignments.length">
-      <h2 class="font-bold mb-2">In Progress</h2>
-      <ul>
-        <li v-for="assignment in inprogressAssignments" :key="assignment.id">
-          <label>
-            {{ assignment.name }}
-            <input type="checkbox" v-model="assignment.completed">
-          </label>
-        </li>
-      </ul>
-    </section>
+import AssignmentList from "./AssignmentList.js"
 
-    <section v-show="completedAssignments.length" class="mt-8">
-      <h2 class="font-bold">Completed</h2>
-      <ul>
-        <li v-for="assignment in completedAssignments" :key="assignment.id">
-          <label>
-            {{ assignment.name }}
-            <input type="checkbox" v-model="assignment.completed">
-          </label>
-        </li>
-      </ul>
-    </section>
+export default {
+  components: { AssignmentList },
+  template: `
+    <assignment-list :assignments="inprogressAssignments" title="In Progress"></assignment-list>
+
+    <assignment-list :assignments="completedAssignments" title="Completed"></assignment-list>
   `,
   data() {
     return {
