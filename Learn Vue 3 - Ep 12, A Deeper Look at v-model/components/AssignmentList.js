@@ -12,7 +12,7 @@ export default {
 
       <assignment-tag 
         :initial-tags="assignments.map(a => a.tag)" 
-        v-model="currentTag"
+        v-model:currentTag="currentTag"
       />
 
       <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
