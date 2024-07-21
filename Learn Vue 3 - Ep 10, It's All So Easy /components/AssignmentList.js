@@ -12,19 +12,27 @@ export default {
         <span> ({{ assignments.length }}) </span>
       </h2>
 
-      <div class="flex space-x-2 mb-4">
+      <div class="flex gap-2">
         <span 
+          @click="currentTag = tag"
           v-for="tag in tags" 
           :key="tag"
           class="text-xs px-2 py-1 border rounded"
         >
           {{ tag }}
         </span>
+
+        <span
+          @click="currentTag = ''"
+          class="text-xs px-2 py-1 border rounded"
+        >
+          All
+        </span>
       </div>
 
       <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
         <assignment 
-          v-for="assignment in assignments" 
+          v-for="assignment in filteredAssignments"
           :key="assignment.id" 
           :assignment="assignment"
         >
@@ -37,9 +45,25 @@ export default {
     title: String
   },
 
+  data() {
+    return {
+      currentTag: ''
+    }
+  },
+
   computed: {
     tags () {
-      return ['science', 'math', 'reading']
+      return new Set(this.assignments.map(assignment => assignment.tag)) 
+    },
+
+    filteredAssignments() {
+      return this.assignments.filter(assignment => {
+        if (!this.currentTag) {
+          return true
+        }
+
+        return assignment.tag === this.currentTag
+      })
     }
   }
 }
