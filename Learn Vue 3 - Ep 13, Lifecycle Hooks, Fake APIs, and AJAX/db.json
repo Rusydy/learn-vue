@@ -1,0 +1,22 @@
+{
+  "assignments": [
+    {
+      "id": 1,
+      "name": "Finish Vue 3 course",
+      "completed": false,
+      "tag": "vue"
+    },
+    {
+      "id": 2,
+      "name": "Read chapter 4",
+      "completed": false,
+      "tag": "reading"
+    },
+    {
+      "id": 3,
+      "name": "Do the dishes",
+      "completed": true,
+      "tag": "chores"
+    }
+  ]
+}
