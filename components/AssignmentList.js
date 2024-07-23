@@ -4,7 +4,7 @@ import AssignmentTag from "./AssignmentTag.js"
 export default {
   components: { Assignment, AssignmentTag },
   template: `
-    <section v-show="assignments.length" class="w-60">
+    <section v-show="assignments.length" class="w-60 border border-gray-600 bg-gray-700 rounded-lg p-4">
       <div class="flex justify-between items-start">
         <h2 class="font-bold mb-2">
           {{ title }}
