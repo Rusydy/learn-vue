@@ -26,8 +26,7 @@ export default {
           v-for="assignment in filteredAssignments"
           :key="assignment.id" 
           :assignment="assignment"
-        >
-        </assignment>
+        />
       </ul>
 
       <slot></slot>

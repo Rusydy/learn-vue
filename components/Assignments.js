@@ -6,7 +6,7 @@ export default {
   template: `
     <section class="flex gap-8">
       <assignment-list :assignments="inProgress" title="In Progress">
-        <assignment-create @add="add"></assignment-create>
+        <assignment-create @add="add"/>
       </assignment-list>
       
       <assignment-list 
