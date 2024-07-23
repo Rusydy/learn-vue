@@ -8,20 +8,21 @@ export default {
       <assignment-list :assignments="inProgress" title="In Progress">
         <assignment-create @add="add"/>
       </assignment-list>
-      
-      <assignment-list 
-        :assignments="completed" 
-        title="Completed"
-        can-toggle
-      >
-      </assignment-list>
+
+      <div v-show="showCompleted">
+        <assignment-list 
+          :assignments="completed" 
+          title="Completed"
+          can-toggle
+          @toggle="showCompleted = !showCompleted"
+        />
+      </div>
     </section>
   `,
   data() {
     return {
       assignments: [],
-
-      newAssignment: ''
+      showCompleted: true
     };
   },
   computed: {

@@ -13,6 +13,7 @@ export default {
 
         <button 
           v-show="canToggle"
+          @click="$emit('toggle')"
         >&times;</button>
       </div>
 
