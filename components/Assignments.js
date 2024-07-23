@@ -4,11 +4,12 @@ import AssignmentCreate from "./AssignmentCreate.js";
 export default {
   components: { AssignmentList, AssignmentCreate },
   template: `
-    <section class="space-y-6">
-      <assignment-list :assignments="inProgress" title="In Progress"></assignment-list>
+    <section class="flex gap-8">
+      <assignment-list :assignments="inProgress" title="In Progress">
+        <assignment-create @add="add"></assignment-create>
+      </assignment-list>
+      
       <assignment-list :assignments="completed" title="Completed"></assignment-list>
-
-      <assignment-create @add="add"></assignment-create>
     </section>
   `,
   data() {
@@ -28,7 +29,7 @@ export default {
   },
 
   created() {
-    fetch('http://localhost:3000/assignments')
+    fetch('http://localhost:3001/assignments')
       .then(response => response.json())
       .then(assignments => this.assignments = assignments);
   },

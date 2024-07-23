@@ -5,7 +5,7 @@ export default {
   components: { Assignment, AssignmentTag },
   template: `
     <section v-show="assignments.length">
-      <h2 class="font-bold mb-2">
+      <h2 class="font-bold mb-2 w-60">
         {{ title }}
         <span> ({{ assignments.length }}) </span>
       </h2>
@@ -23,6 +23,8 @@ export default {
         >
         </assignment>
       </ul>
+
+      <slot></slot>
     </section>
   `,
   props: {
