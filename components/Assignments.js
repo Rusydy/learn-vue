@@ -9,7 +9,12 @@ export default {
         <assignment-create @add="add"></assignment-create>
       </assignment-list>
       
-      <assignment-list :assignments="completed" title="Completed"></assignment-list>
+      <assignment-list 
+        :assignments="completed" 
+        title="Completed"
+        can-toggle
+      >
+      </assignment-list>
     </section>
   `,
   data() {

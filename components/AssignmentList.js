@@ -4,11 +4,17 @@ import AssignmentTag from "./AssignmentTag.js"
 export default {
   components: { Assignment, AssignmentTag },
   template: `
-    <section v-show="assignments.length">
-      <h2 class="font-bold mb-2 w-60">
-        {{ title }}
-        <span> ({{ assignments.length }}) </span>
-      </h2>
+    <section v-show="assignments.length" class="w-60">
+      <div class="flex justify-between items-start">
+        <h2 class="font-bold mb-2">
+          {{ title }}
+          <span> ({{ assignments.length }}) </span>
+        </h2>
+
+        <button 
+          v-show="canToggle"
+        >&times;</button>
+      </div>
 
       <assignment-tag 
         :initial-tags="assignments.map(a => a.tag)" 
@@ -29,7 +35,11 @@ export default {
   `,
   props: {
     assignments: Array,
-    title: String
+    title: String,
+    canToggle: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
